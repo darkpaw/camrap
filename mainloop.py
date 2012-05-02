@@ -48,6 +48,7 @@ screenres = (1440,920)
 
 # use n frames of position info. in averaging
 AVG_WINDOW = 1
+CAMERA_DEVICE = '/dev/video0'
 
 class mainloop(object):
 
@@ -64,7 +65,7 @@ class mainloop(object):
             pygame.HWSURFACE   )  #| pygame.OPENGL 
         
         pygame.display.set_caption("Camrap")
-        self.cam = pygame.camera.Camera("/dev/video1", camres)
+        self.cam = pygame.camera.Camera(CAMERA_DEVICE, camres)
         camrenderpos = (10,10)
         self.camrenderpos = camrenderpos 
         
