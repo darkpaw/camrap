@@ -69,13 +69,17 @@ class positionareax(displayarea):
             surf.fill((255,0,0), rect=(self.x + 5 * i, self.y + 22,  1, 10), special_flags=0)
       
     def showpos(self, avgs):
+        
+        if not avgs.prevxdigits:
+            return
+            
         #print "showpos", pos, self.x, self.y, self.x1, self.y1
-        pos = avgs.ydigits[0]
+        pos = avgs.xdigits[0]
         self.write_text("%0.5f" % pos, (522, 0), True)
         
         for d in range(4):
-            pos = avgs.ydigits[d]
-            prevpos = avgs.prevydigits[d]
+            pos = avgs.xdigits[d]
+            prevpos = avgs.prevxdigits[d]
             self.surf.fill((0,0,20), rect=(self.x + prevpos * 500, self.y + 32 + d * 10, 2, 10), special_flags=0)
             self.surf.fill((0,220, 20), rect=(self.x + pos * 500, self.y + 32 + d * 10, 2, 10), special_flags=0)
         
@@ -98,15 +102,18 @@ class positionareay(displayarea):
         
     def showpos(self, avgs):
         
+        if not avgs.prevydigits:
+            return
+            
         width = self.x1 - self.x
-        pos = avgs.xdigits[0]
+        pos = avgs.ydigits[0]
         
         #print "showpos", pos, self.x, self.y, self.x1, self.y1
         self.write_text("Y %0.5f" % pos, (62, 0), True)
 
         for d in range(4):
-            pos = avgs.xdigits[d]
-            prevpos = avgs.prevxdigits[d]
+            pos = avgs.ydigits[d]
+            prevpos = avgs.prevydigits[d]
             self.surf.fill((0,0,20), rect=(self.x + 32 + d * 10, self.y + prevpos * 500, 10, 2), special_flags=0)
             self.surf.fill((0,220, 20), rect=(self.x + 32 + d * 10, self.y + pos * 500, 10, 2), special_flags=0)
             #self.surf.fill((0, 50, 255), rect=(1060 + d * 20, 20 + avgs.ydigits[d] * 1000, 16, 2), special_flags=0)
@@ -231,8 +238,8 @@ class statusarea(displayarea):
         elif posy == None:
             return
         else:       
-            xtext = "X %02.5f" % posx
-            ytext = "Y %02.5f" % posy
+            xtext = "X %02.4f" % posx
+            ytext = "Y %02.4f" % posy
         self.runningavgvals.append((posx,posy))
         self.write_text(xtext, (20, 30), False)
         self.write_text(ytext, (20, 64), False)

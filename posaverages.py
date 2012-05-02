@@ -34,8 +34,8 @@ class posaverages(object):
         self.xdigits = [0.5, 0.5, 0.5, 0.5, 0.5]
         self.ydigits = [0.5, 0.5, 0.5, 0.5, 0.5]
 
-        #self.prevxdigits = list(self.xdigits)
-        #self.prevydigits = list(self.ydigits)
+        self.prevxdigits = None
+        self.prevydigits = None
 
 
     

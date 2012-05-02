@@ -42,7 +42,7 @@ camresolutions =  (
     (1280, 720), 
 )
 
-camres = camresolutions[2]
+camres = camresolutions[0]
 fullscreen = False
 screenres = (1440,920)
 
@@ -64,7 +64,7 @@ class mainloop(object):
             pygame.HWSURFACE   )  #| pygame.OPENGL 
         
         pygame.display.set_caption("Camrap")
-        self.cam = pygame.camera.Camera("/dev/video0", camres)
+        self.cam = pygame.camera.Camera("/dev/video1", camres)
         camrenderpos = (10,10)
         self.camrenderpos = camrenderpos 
         
@@ -78,7 +78,7 @@ class mainloop(object):
         self.hlinesarea = displayareas.hlinesarea((camrect[2], camrect[1], camrect[2]+50, camrect[3]), self.screen)
         self.posareax = displayareas.positionareax((camrect[0], xpostop, camrect[0] + 500, xpostop + 60), self.screen)
         self.posareay = displayareas.positionareay((yposleft, camrect[1], yposleft + 100, camrect[1] + 500), self.screen)
-        self.statusarea = displayareas.statusarea((camrect[2] + 10, camrect[3] + 60, camrect[2] + 310, camrect[3] + 250), self.screen)
+        self.statusarea = displayareas.statusarea((camrect[2] + 10, camrect[3] + 60, camrect[2] + 150, camrect[3] + 250), self.screen)
         
         self.poslog = open("poslog.csv", 'w')
         
@@ -173,7 +173,7 @@ class mainloop(object):
 				xavg = -9.99
 				yavg = -9.99
 				
-            if framecount % 10 == 0:
+            if framecount % AVG_WINDOW == 0:
                 if centrex != None and centrex != None:
                     self.poslog.write("%0.7f, %0.7f\n" % (xavg, yavg))
                     #self.poslog.write("%0.7f, %0.7f\n" % (centrex, centrey))
@@ -212,7 +212,7 @@ class mainloop(object):
             
             cellimgs = positioning.getcellimages(cells, imgasarray)
             #print "cell images count:", len(cellimgs)
-            self.screen.fill((0,0,0), rect=(self.posareay.x1 + 25, 15, 400, 700))
+            self.screen.fill((0,0,0), rect=(self.posareay.x1 + 25, 15, 300, 700))
 
             poskey = []
             fail = False
@@ -264,8 +264,8 @@ class mainloop(object):
             
             if pos != None:
                 #print "grid position>>>>> ", pos
-                fullcentrey = pos[1] + xavg + centrerow# + xavg
-                fullcentrex = pos[0] + yavg + centrecol# + yavg
+                fullcentrex = pos[0] + xavg + centrerow
+                fullcentrey = pos[1] + yavg + centrecol
                 self.statusarea.showpos(fullcentrex, fullcentrey)
 
             else:
