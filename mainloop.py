@@ -42,7 +42,7 @@ camresolutions =  (
     (1280, 720), 
 )
 
-camres = camresolutions[0]
+camres = camresolutions[2]
 fullscreen = False
 screenres = (1440,920)
 

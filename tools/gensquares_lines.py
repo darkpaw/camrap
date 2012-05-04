@@ -1,6 +1,7 @@
 
+#%%BoundingBox: 0 0 1190 842  
+
 print """%!PS-Adobe-1.0 
-%%BoundingBox: 0 0 1190 842  
 %%EndComments 
 %%EndProlog 
 gsave 
@@ -23,10 +24,9 @@ matrix currentmatrix /originmat exch def
 setfont
 
 %/mm { 72 mul 25.4 div } bind def
-/mm { 72 mul 25 div } bind def
+/mm { 72 mul 25.4 div } bind def
 
 """
-
 
 
 # a4 = 297 * 210 mm   842 595 points
