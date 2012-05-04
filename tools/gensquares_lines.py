@@ -16,7 +16,7 @@ matrix currentmatrix /originmat exch def
  
 0 0 m 
 [] 0 setdash 
-1.0 setlinewidth 
+0.5 setlinewidth 
 0 0 0 setrgbcolor 
 
 /Times-Roman findfont
@@ -31,6 +31,13 @@ setfont
 
 # a4 = 297 * 210 mm   842 595 points
 # a3 = 297 *420
+
+# linewidths: (above)
+# 6mm 1.5
+# 4mm 1.0
+# 2mm 0.5
+
+width_mm = 2
 
 #0 0 moveto
 import math
@@ -50,7 +57,6 @@ ymargin = 6
 yrange = (ymargin, max_y - ymargin)
 xrange = (xmargin, max_x - xmargin)
 
-width_mm = 4
 
 colour = True
 
