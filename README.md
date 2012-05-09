@@ -9,7 +9,7 @@ README stuff:
 
 The camrap software is written for Python v2.7.
 
-It will capture images of a printed grid with a webcam and report camera the X-Y location based on image analysis.
+It will capture images of a printed grid with a webcam and report the camera X-Y location based on image analysis.
 
 It needs some python libraries:
 
